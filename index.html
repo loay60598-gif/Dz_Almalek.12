@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Almalek - الملك</title>
+  <!-- FontAwesome & Google Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      /* Emerald & Neon Purple Futuristic Theme */
+      --bg-main: #0b0f19;
+      --bg-card: #111827;
+      --bg-hover: #1f2937;
+      --text-main: #f3f4f6;
+      --text-sub: #9ca3af;
+      --primary: #10b981;
+      --primary-hover: #059669;
+      --accent: #8b5cf6;
+      --crown-gold: #f59e0b;
+      --border-color: #374151;
+      --shadow: 0 12px 28px 0 rgba(0, 0, 0, 0.4);
+      --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+      --header-height: 60px;
+    }
+
+    [data-theme="light"] {
+      --bg-main: #f0f4f8;
+      --bg-card: #ffffff;
+      --bg-hover: #e2e8f0;
+      --text-main: #0f172a;
+      --text-sub: #64748b;
+      --primary: #059669;
+      --primary-hover: #047857;
+      --accent: #7c3aed;
+      --crown-gold: #d97706;
+      --border-color: #cbd5e1;
+      --shadow: 0 10px 25px rgba(0,0,0,0.08);
+      --card-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Cairo', 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      overflow-x: hidden;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    /* HEADER */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--header-height);
+      background-color: var(--bg-card);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      box-shadow: var(--shadow);
+      z-index: 1000;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 20px;
+      position: relative;
+      box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+    }
+
+    .logo-icon i.fa-crown {
+      position: absolute;
+      top: -6px;
+      right: -4px;
+      color: var(--crown-gold);
+      font-size: 14px;
+      transform: rotate(20deg);
+    }
+
+    .brand-name {
+      font-size: 22px;
+      font-weight: 800;
+      background: linear-gradient(45deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.5px;
+    }
+
+    .search-bar {
+      background: var(--bg-main);
+      border-radius: 50px;
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--border-color);
+      color: var(--text-sub);
+    }
+
+    .search-bar input {
+      border: none;
+      background: transparent;
+      outline: none;
+      color: var(--text-main);
+      font-size: 14px;
+      width: 180px;
+    }
+
+    .header-nav {
+      display: flex;
+      height: 100%;
+    }
+
+    .nav-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 80px;
+      height: 100%;
+      color: var(--text-sub);
+      font-size: 20px;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      transition: all 0.2s;
+    }
+
+    .nav-btn:hover {
+      background-color: var(--bg-hover);
+      color: var(--primary);
+    }
+
+    .nav-btn.active {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .icon-circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--bg-hover);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--text-main);
+      font-size: 16px;
+      transition: 0.2s;
+      border: 1px solid var(--border-color);
+    }
+
+    .icon-circle:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    .lang-btn {
+      padding: 6px 12px;
+      border-radius: 20px;
+      background: var(--bg-hover);
+      color: var(--text-main);
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      border: 1px solid var(--border-color);
+    }
+
+    .profile-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 8px 4px 12px;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .profile-pill:hover {
+      background: var(--bg-hover);
+    }
+
+    .avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    /* MAIN CONTAINER */
+    .main-container {
+      display: grid;
+      grid-template-columns: 280px 1fr 320px;
+      gap: 24px;
+      margin-top: var(--header-height);
+      padding: 20px;
+      max-width: 1400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* LEFT SIDEBAR */
+    .sidebar-left {
+      position: sticky;
+      top: calc(var(--header-height) + 20px);
+      height: calc(100vh - var(--header-height) - 40px);
+      overflow-y: auto;
+    }
+
+    .sidebar-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      cursor: pointer;
+      color: var(--text-main);
+      font-weight: 600;
+      font-size: 15px;
+      transition: background 0.2s;
+    }
+
+    .sidebar-item:hover {
+      background: var(--bg-hover);
+    }
+
+    .sidebar-item i {
+      width: 30px;
+      font-size: 20px;
+      color: var(--primary);
+      text-align: center;
+    }
+
+    .sidebar-divider {
+      height: 1px;
+      background: var(--border-color);
+      margin: 12px 0;
+    }
+
+    /* MAIN FEED */
+    .feed-container {
+      max-width: 680px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* STORIES */
+    .stories-container {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 16px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+    }
+
+    .story-card {
+      min-width: 110px;
+      height: 190px;
+      border-radius: 16px;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: var(--card-shadow);
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: 1px solid var(--border-color);
+    }
+
+    .story-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    }
+
+    .story-bg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .story-avatar {
+      position: absolute;
+      top: 10px;
+      inset-inline-start: 10px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 3px solid var(--primary);
+    }
+
+    .story-name {
+      position: absolute;
+      bottom: 10px;
+      inset-inline-start: 10px;
+      inset-inline-end: 10px;
+      color: white;
+      font-weight: 600;
+      font-size: 13px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+    }
+
+    /* CREATE POST CARD */
+    .create-post-card {
+      background: var(--bg-card);
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: var(--card-shadow);
+      margin-bottom: 16px;
+      border: 1px solid var(--border-color);
+    }
+
+    .create-post-top {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .create-post-input {
+      flex: 1;
+      background: var(--bg-main);
+      border-radius: 50px;
+      padding: 12px 18px;
+      color: var(--text-sub);
+      cursor: pointer;
+      font-size: 15px;
+      border: 1px solid var(--border-color);
+    }
+
+    .create-post-input:hover {
+      background: var(--bg-hover);
+    }
+
+    .create-post-bottom {
+      display: flex;
+      justify-content: space-around;
+      padding-top: 12px;
+    }
+
+    .action-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      color: var(--text-sub);
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .action-btn:hover {
+      background: var(--bg-hover);
+    }
+
+    /* POST CARD */
+    .post-card {
+      background: var(--bg-card);
+      border-radius: 16px;
+      box-shadow: var(--card-shadow);
+      margin-bottom: 20px;
+      border: 1px solid var(--border-color);
+      overflow: hidden;
+    }
+
+    .post-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 16px;
+    }
+
+    .post-author-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .author-name {
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .king-badge {
+      color: var(--crown-gold);
+      font-size: 13px;
+    }
+
+    .post-time {
+      font-size: 12px;
+      color: var(--text-sub);
+    }
+
+    .post-content {
+      padding: 0 16px 12px 16px;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .post-media {
+      width: 100%;
+      max-height: 480px;
+      object-fit: cover;
+      background: black;
+    }
+
+    .post-stats {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 16px;
+      color: var(--text-sub);
+      font-size: 13px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .likes-count {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .like-icon-bg {
+      width: 20px;
+      height: 20px;
+      background: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 10px;
+    }
+
+    .post-actions {
+      display: flex;
+      padding: 4px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .post-action-btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 8px 0;
+      border-radius: 8px;
+      color: var(--text-sub);
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .post-action-btn:hover {
+      background: var(--bg-hover);
+    }
+
+    .post-action-btn.liked {
+      color: var(--primary);
+    }
+
+    /* COMMENTS SECTION */
+    .comments-section {
+      padding: 12px 16px;
+    }
+
+    .comment-item {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .comment-bubble {
+      background: var(--bg-hover);
+      padding: 8px 14px;
+      border-radius: 16px;
+      max-width: 85%;
+    }
+
+    .comment-author {
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .comment-text {
+      font-size: 14px;
+    }
+
+    .add-comment-box {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .comment-input {
+      flex: 1;
+      background: var(--bg-main);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 8px 16px;
+      outline: none;
+      color: var(--text-main);
+    }
+
+    /* RIGHT SIDEBAR */
+    .sidebar-right {
+      position: sticky;
+      top: calc(var(--header-height) + 20px);
+      height: calc(100vh - var(--header-height) - 40px);
+      overflow-y: auto;
+    }
+
+    .section-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-sub);
+      margin-bottom: 12px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 10px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .contact-item:hover {
+      background: var(--bg-hover);
+    }
+
+    .contact-avatar-wrapper {
+      position: relative;
+    }
+
+    .online-badge {
+      position: absolute;
+      bottom: 0;
+      inset-inline-end: 0;
+      width: 10px;
+      height: 10px;
+      background: #10b981;
+      border-radius: 50%;
+      border: 2px solid var(--bg-card);
+    }
+
+    /* FLOATING CHAT */
+    .chat-window {
+      position: fixed;
+      bottom: 0;
+      inset-inline-start: 80px;
+      width: 320px;
+      height: 420px;
+      background: var(--bg-card);
+      border-radius: 16px 16px 0 0;
+      box-shadow: var(--shadow);
+      display: none;
+      flex-direction: column;
+      z-index: 2000;
+      border: 1px solid var(--border-color);
+    }
+
+    .chat-header {
+      padding: 10px 14px;
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-radius: 16px 16px 0 0;
+    }
+
+    .chat-user {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .chat-body {
+      flex: 1;
+      padding: 12px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .message {
+      max-width: 75%;
+      padding: 8px 12px;
+      border-radius: 16px;
+      font-size: 14px;
+    }
+
+    .message.sent {
+      background: var(--primary);
+      color: white;
+      align-self: flex-end;
+    }
+
+    .message.received {
+      background: var(--bg-hover);
+      color: var(--text-main);
+      align-self: flex-start;
+    }
+
+    .chat-footer {
+      padding: 10px;
+      display: flex;
+      gap: 8px;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .chat-footer input {
+      flex: 1;
+      border: 1px solid var(--border-color);
+      background: var(--bg-main);
+      padding: 8px 12px;
+      border-radius: 20px;
+      outline: none;
+      color: var(--text-main);
+    }
+
+    /* MODALS */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(4px);
+      z-index: 3000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      background: var(--bg-card);
+      width: 500px;
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+
+    .modal-header {
+      padding: 14px;
+      border-bottom: 1px solid var(--border-color);
+      text-align: center;
+      font-weight: 700;
+      position: relative;
+    }
+
+    .close-modal {
+      position: absolute;
+      inset-inline-end: 14px;
+      top: 14px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .modal-body {
+      padding: 16px;
+    }
+
+    .modal-textarea {
+      width: 100%;
+      height: 100px;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: var(--text-main);
+      font-size: 16px;
+      resize: none;
+    }
+
+    .input-field {
+      width: 100%;
+      background: var(--bg-main);
+      border: 1px solid var(--border-color);
+      padding: 8px 12px;
+      border-radius: 8px;
+      color: var(--text-main);
+      margin-top: 8px;
+      outline: none;
+    }
+
+    .modal-submit {
+      width: 100%;
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 12px;
+    }
+
+    /* TIC TAC TOE GAME */
+    .game-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .game-cell {
+      height: 80px;
+      background: var(--bg-hover);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      color: var(--primary);
+    }
+
+    @media (max-width: 1100px) {
+      .main-container { grid-template-columns: 240px 1fr; }
+      .sidebar-right { display: none; }
+    }
+
+    @media (max-width: 768px) {
+      .main-container { grid-template-columns: 1fr; }
+      .sidebar-left { display: none; }
+      .search-bar input { display: none; }
+      .chat-window { inset-inline-start: 10px; width: 300px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-left">
+      <a href="#" class="logo-container">
+        <div class="logo-icon">
+          <i class="fa-solid fa-crown"></i>
+          A
+        </div>
+        <span class="brand-name">Almalek</span>
+      </a>
+      <div class="search-bar">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="search-ph" placeholder="بحث في الملك...">
+      </div>
+    </div>
+
+    <div class="header-nav">
+      <div class="nav-btn active"><i class="fa-solid fa-house"></i></div>
+      <div class="nav-btn"><i class="fa-solid fa-tv"></i></div>
+      <div class="nav-btn"><i class="fa-solid fa-store"></i></div>
+      <div class="nav-btn"><i class="fa-solid fa-users"></i></div>
+      <div class="nav-btn" onclick="openGameModal()"><i class="fa-solid fa-gamepad"></i></div>
+    </div>
+
+    <div class="header-right">
+      <button class="lang-btn" id="lang-btn" onclick="toggleLanguage()">English</button>
+      <div class="icon-circle" id="theme-toggle"><i class="fa-solid fa-sun"></i></div>
+      <div class="icon-circle"><i class="fa-solid fa-bell"></i></div>
+      <div class="icon-circle" onclick="openChat('سارة أحمد', 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&auto=format&fit=crop&q=80')">
+        <i class="fa-brands fa-facebook-messenger"></i>
+      </div>
+      <div class="profile-pill">
+        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" class="avatar" alt="الملك">
+        <span data-i18n="user_name">الملك العربي</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN LAYOUT -->
+  <div class="main-container">
+    
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar-left">
+      <div class="sidebar-item">
+        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" class="avatar" alt="">
+        <span data-i18n="user_name">الملك العربي</span>
+      </div>
+      <div class="sidebar-item">
+        <i class="fa-solid fa-user-group"></i>
+        <span data-i18n="friends">الأصدقاء</span>
+      </div>
+      <div class="sidebar-item">
+        <i class="fa-solid fa-clock-rotate-left"></i>
+        <span data-i18n="memories">الذكريات</span>
+      </div>
+      <div class="sidebar-item">
+        <i class="fa-solid fa-bookmark" style="color: var(--accent);"></i>
+        <span data-i18n="saved">العناصر المحفوظة</span>
+      </div>
+      <div class="sidebar-item">
+        <i class="fa-solid fa-users-rectangle"></i>
+        <span data-i18n="groups">المجموعات</span>
+      </div>
+      <div class="sidebar-item">
+        <i class="fa-solid fa-video"></i>
+        <span data-i18n="videos">الفيديوهات</span>
+      </div>
+      <div class="sidebar-item" onclick="openGameModal()">
+        <i class="fa-solid fa-gamepad" style="color: var(--crown-gold);"></i>
+        <span data-i18n="games">الألعاب</span>
+      </div>
+      <div class="sidebar-divider"></div>
+      <div class="section-title" data-i18n="shortcuts">اختصاراتك</div>
+      <div class="sidebar-item">
+        <i class="fa-solid fa-crown" style="color: var(--crown-gold);"></i>
+        <span data-i18n="council">مجلس الملوك</span>
+      </div>
+    </aside>
+
+    <!-- FEED -->
+    <main class="feed-container">
+      
+      <!-- STORIES -->
+      <div class="stories-container">
+        <div class="story-card">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&auto=format&fit=crop&q=80" class="story-bg" alt="">
+          <div style="position:absolute; bottom:0; width:100%; background:var(--bg-card); text-align:center; padding:8px 0;">
+            <i class="fa-solid fa-circle-plus" style="color:var(--primary); font-size:24px; margin-top:-20px;"></i>
+            <div class="story-name" style="position:static; color:var(--text-main);" data-i18n="add_story">أنشئ قصة</div>
+          </div>
+        </div>
+        <div class="story-card">
+          <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=300&auto=format&fit=crop&q=80" class="story-bg" alt="">
+          <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&auto=format&fit=crop&q=80" class="story-avatar" alt="">
+          <div class="story-name">سارة أحمد</div>
+        </div>
+        <div class="story-card">
+          <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=300&auto=format&fit=crop&q=80" class="story-bg" alt="">
+          <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=100&auto=format&fit=crop&q=80" class="story-avatar" alt="">
+          <div class="story-name">محمد علي</div>
+        </div>
+      </div>
+
+      <!-- CREATE POST BOX -->
+      <div class="create-post-card">
+        <div class="create-post-top">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" class="avatar" alt="">
+          <div class="create-post-input" id="open-post-modal" data-i18n="mind_placeholder">بم تفكر يا ملك؟</div>
+        </div>
+        <div class="create-post-bottom">
+          <div class="action-btn" onclick="openPostModal('video')"><i class="fa-solid fa-video" style="color:#ef4444;"></i> <span data-i18n="live_video">فيديو مباشر</span></div>
+          <div class="action-btn" onclick="openPostModal('image')"><i class="fa-regular fa-images" style="color:#10b981;"></i> <span data-i18n="photo_video">صورة/فيديو</span></div>
+          <div class="action-btn"><i class="fa-regular fa-face-smile" style="color:#f59e0b;"></i> <span data-i18n="feeling">شعور/نشاط</span></div>
+        </div>
+      </div>
+
+      <!-- POSTS CONTAINER -->
+      <div id="posts-list"></div>
+
+    </main>
+
+    <!-- RIGHT SIDEBAR -->
+    <aside class="sidebar-right">
+      <div class="section-title" data-i18n="friend_requests">طلبات الصداقة</div>
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80" class="avatar" alt="">
+        <div>
+          <div style="font-weight:700; font-size:14px;">يوسف حسن</div>
+          <div style="display:flex; gap:6px; margin-top:4px;">
+            <button style="background:var(--primary); color:white; border:none; padding:4px 12px; border-radius:6px; font-weight:700; cursor:pointer;" data-i18n="confirm">تأكيد</button>
+            <button style="background:var(--bg-hover); color:var(--text-main); border:none; padding:4px 12px; border-radius:6px; font-weight:700; cursor:pointer;" data-i18n="delete">حذف</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-divider"></div>
+      <div class="section-title" data-i18n="online_friends">الأصدقاء المتصلون</div>
+
+      <div class="contact-item" onclick="openChat('سارة أحمد', 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&auto=format&fit=crop&q=80')">
+        <div class="contact-avatar-wrapper">
+          <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&auto=format&fit=crop&q=80" class="avatar" alt="">
+          <div class="online-badge"></div>
+        </div>
+        <span style="font-weight:600; font-size:14px;">سارة أحمد</span>
+      </div>
+
+      <div class="contact-item" onclick="openChat('محمد علي', 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=100&auto=format&fit=crop&q=80')">
+        <div class="contact-avatar-wrapper">
+          <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=100&auto=format&fit=crop&q=80" class="avatar" alt="">
+          <div class="online-badge"></div>
+        </div>
+        <span style="font-weight:600; font-size:14px;">محمد علي</span>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- FLOATING CHAT -->
+  <div class="chat-window" id="chat-window">
+    <div class="chat-header">
+      <div class="chat-user">
+        <img src="" id="chat-user-img" class="avatar" style="width:28px; height:28px;" alt="">
+        <span id="chat-user-name">اسم المستخدم</span>
+      </div>
+      <i class="fa-solid fa-xmark" style="cursor:pointer;" onclick="closeChat()"></i>
+    </div>
+    <div class="chat-body" id="chat-body">
+      <div class="message received" data-i18n="chat_welcome">مرحباً! كيف حالك اليوم؟</div>
+    </div>
+    <div class="chat-footer">
+      <input type="text" id="chat-input" placeholder="اكتب رسالة..." onkeypress="handleChatKey(event)">
+      <i class="fa-solid fa-paper-plane" style="color:var(--primary); font-size:18px; cursor:pointer; align-self:center;" onclick="sendMessage()"></i>
+    </div>
+  </div>
+
+  <!-- CREATE POST MODAL -->
+  <div class="modal" id="post-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span data-i18n="create_post">إنشاء منشور جديد</span>
+        <i class="fa-solid fa-xmark close-modal" id="close-post-modal"></i>
+      </div>
+      <div class="modal-body">
+        <textarea class="modal-textarea" id="modal-text" placeholder="بم تفكر يا ملك؟"></textarea>
+        <input type="text" class="input-field" id="modal-media-url" placeholder="رابط صورة أو فيديو (اختياري)...">
+        <button class="modal-submit" id="submit-post" data-i18n="publish">نشر المنشور</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- GAMES MODAL -->
+  <div class="modal" id="game-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span data-i18n="game_title">مركز الألعاب - Tic Tac Toe</span>
+        <i class="fa-solid fa-xmark close-modal" onclick="closeGameModal()"></i>
+      </div>
+      <div class="modal-body" style="text-align: center;">
+        <p id="game-status" style="font-weight: 700; color: var(--primary);">دور اللاعب: X</p>
+        <div class="game-grid">
+          <div class="game-cell" onclick="makeMove(this, 0)"></div>
+          <div class="game-cell" onclick="makeMove(this, 1)"></div>
+          <div class="game-cell" onclick="makeMove(this, 2)"></div>
+          <div class="game-cell" onclick="makeMove(this, 3)"></div>
+          <div class="game-cell" onclick="makeMove(this, 4)"></div>
+          <div class="game-cell" onclick="makeMove(this, 5)"></div>
+          <div class="game-cell" onclick="makeMove(this, 6)"></div>
+          <div class="game-cell" onclick="makeMove(this, 7)"></div>
+          <div class="game-cell" onclick="makeMove(this, 8)"></div>
+        </div>
+        <button class="modal-submit" onclick="resetGame()" style="margin-top:15px;" data-i18n="reset_game">إعادة اللعب</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // TRANSLATIONS DATA
+    const translations = {
+      ar: {
+        search_ph: "بحث في الملك...",
+        user_name: "الملك العربي",
+        friends: "الأصدقاء",
+        memories: "الذكريات",
+        saved: "العناصر المحفوظة",
+        groups: "المجموعات",
+        videos: "الفيديوهات",
+        games: "الألعاب",
+        shortcuts: "اختصاراتك",
+        council: "مجلس الملوك",
+        add_story: "أنشئ قصة",
+        mind_placeholder: "بم تفكر يا ملك؟",
+        live_video: "فيديو مباشر",
+        photo_video: "صورة/فيديو",
+        feeling: "شعور/نشاط",
+        friend_requests: "طلبات الصداقة",
+        confirm: "تأكيد",
+        delete: "حذف",
+        online_friends: "الأصدقاء المتصلون",
+        chat_welcome: "مرحباً! كيف حالك اليوم؟",
+        chat_ph: "اكتب رسالة...",
+        create_post: "إنشاء منشور جديد",
+        publish: "نشر المنشور",
+        game_title: "مركز الألعاب - Tic Tac Toe",
+        reset_game: "إعادة اللعب",
+        like: "أعجبني",
+        comment: "تعليق",
+        share: "مشاركة",
+        comments_word: "تعليقات"
+      },
+      en: {
+        search_ph: "Search Almalek...",
+        user_name: "The Arab King",
+        friends: "Friends",
+        memories: "Memories",
+        saved: "Saved Items",
+        groups: "Groups",
+        videos: "Videos",
+        games: "Games",
+        shortcuts: "Your Shortcuts",
+        council: "Kings Council",
+        add_story: "Create Story",
+        mind_placeholder: "What's on your mind, King?",
+        live_video: "Live Video",
+        photo_video: "Photo/Video",
+        feeling: "Feeling/Activity",
+        friend_requests: "Friend Requests",
+        confirm: "Confirm",
+        delete: "Delete",
+        online_friends: "Online Friends",
+        chat_welcome: "Hello! How are you today?",
+        chat_ph: "Type a message...",
+        create_post: "Create New Post",
+        publish: "Publish Post",
+        game_title: "Games Center - Tic Tac Toe",
+        reset_game: "Reset Game",
+        like: "Like",
+        comment: "Comment",
+        share: "Share",
+        comments_word: "Comments"
+      }
+    };
+
+    let currentLang = 'ar';
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'ar' ? 'en' : 'ar';
+      document.documentElement.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+      document.documentElement.setAttribute('lang', currentLang);
+      document.getElementById('lang-btn').innerText = currentLang === 'ar' ? 'English' : 'عربي';
+      
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[currentLang][key]) {
+          el.innerText = translations[currentLang][key];
+        }
+      });
+
+      document.getElementById('search-ph').placeholder = translations[currentLang].search_ph;
+      document.getElementById('chat-input').placeholder = translations[currentLang].chat_ph;
+      renderPosts();
+    }
+
+    // INITIAL POSTS DATA WITH VIDEO SUPPORT
+    let posts = [
+      {
+        id: 1,
+        author: "الملك العربي",
+        avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80",
+        time: "منذ 10 دقائق",
+        content: "مرحباً بكم في النسخة الجديدة المطورة! ألعاب، فيديو، ترجمة وتصميم أسطوري 🚀🔥",
+        media: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&auto=format&fit=crop&q=80",
+        isVideo: false,
+        likes: 45,
+        isLiked: false,
+        comments: [{ author: "محمد علي", text: "تصميم المظهر الجديد خرافي للغاية!" }]
+      },
+      {
+        id: 2,
+        author: "سارة أحمد",
+        avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&auto=format&fit=crop&q=80",
+        time: "منذ ساعة",
+        content: "استمتعوا بمشاهدة الفيديو واللعب في المنصة! 🎥✨",
+        media: "https://www.w3schools.com/html/mov_bbb.mp4",
+        isVideo: true,
+        likes: 19,
+        isLiked: false,
+        comments: []
+      }
+    ];
+
+    // RENDER POSTS
+    function renderPosts() {
+      const container = document.getElementById('posts-list');
+      container.innerHTML = '';
+
+      posts.forEach(post => {
+        const postElement = document.createElement('div');
+        postElement.className = 'post-card';
+        postElement.innerHTML = `
+          <div class="post-header">
+            <div class="post-author-info">
+              <img src="${post.avatar}" class="avatar" alt="">
+              <div>
+                <div class="author-name">
+                  ${post.author}
+                  <i class="fa-solid fa-crown king-badge"></i>
+                </div>
+                <div class="post-time">${post.time}</div>
+              </div>
+            </div>
+            <i class="fa-solid fa-ellipsis" style="color:var(--text-sub); cursor:pointer;"></i>
+          </div>
+          <div class="post-content">${post.content}</div>
+          ${post.media ? (post.isVideo ? 
+            `<video src="${post.media}" controls class="post-media"></video>` : 
+            `<img src="${post.media}" class="post-media" alt="">`) : ''}
+          <div class="post-stats">
+            <div class="likes-count">
+              <div class="like-icon-bg"><i class="fa-solid fa-thumbs-up"></i></div>
+              <span>${post.likes}</span>
+            </div>
+            <div>${post.comments.length} ${translations[currentLang].comments_word}</div>
+          </div>
+          <div class="post-actions">
+            <div class="post-action-btn ${post.isLiked ? 'liked' : ''}" onclick="toggleLike(${post.id})">
+              <i class="fa-${post.isLiked ? 'solid' : 'regular'} fa-thumbs-up"></i>
+              <span>${translations[currentLang].like}</span>
+            </div>
+            <div class="post-action-btn">
+              <i class="fa-regular fa-comment"></i>
+              <span>${translations[currentLang].comment}</span>
+            </div>
+            <div class="post-action-btn">
+              <i class="fa-regular fa-share-from-square"></i>
+              <span>${translations[currentLang].share}</span>
+            </div>
+          </div>
+          <div class="comments-section">
+            ${post.comments.map(c => `
+              <div class="comment-item">
+                <div class="comment-bubble">
+                  <div class="comment-author">${c.author}</div>
+                  <div class="comment-text">${c.text}</div>
+                </div>
+              </div>
+            `).join('')}
+            <div class="add-comment-box">
+              <input type="text" class="comment-input" placeholder="${currentLang === 'ar' ? 'اكتب تعليقاً...' : 'Write a comment...'}" onkeypress="handleAddComment(event, ${post.id})">
+            </div>
+          </div>
+        `;
+        container.appendChild(postElement);
+      });
+    }
+
+    function toggleLike(id) {
+      const post = posts.find(p => p.id === id);
+      if (post) {
+        post.isLiked = !post.isLiked;
+        post.likes += post.isLiked ? 1 : -1;
+        renderPosts();
+      }
+    }
+
+    function handleAddComment(e, id) {
+      if (e.key === 'Enter' && e.target.value.trim() !== '') {
+        const post = posts.find(p => p.id === id);
+        if (post) {
+          post.comments.push({
+            author: translations[currentLang].user_name,
+            text: e.target.value.trim()
+          });
+          renderPosts();
+        }
+      }
+    }
+
+    // POST MODAL
+    const modal = document.getElementById('post-modal');
+    function openPostModal(type = '') {
+      modal.style.display = 'flex';
+      if(type === 'video') {
+        document.getElementById('modal-media-url').placeholder = currentLang === 'ar' ? "رابط الفيديو..." : "Video URL...";
+      } else {
+        document.getElementById('modal-media-url').placeholder = currentLang === 'ar' ? "رابط صورة أو فيديو..." : "Photo or Video URL...";
+      }
+    }
+    document.getElementById('open-post-modal').onclick = () => openPostModal();
+    document.getElementById('close-post-modal').onclick = () => modal.style.display = 'none';
+
+    document.getElementById('submit-post').onclick = () => {
+      const text = document.getElementById('modal-text').value.trim();
+      const media = document.getElementById('modal-media-url').value.trim();
+      if (text || media) {
+        const isVid = media.includes('.mp4') || media.includes('video') || media.includes('mov');
+        posts.unshift({
+          id: Date.now(),
+          author: translations[currentLang].user_name,
+          avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80",
+          time: currentLang === 'ar' ? "الآن" : "Just now",
+          content: text,
+          media: media,
+          isVideo: isVid,
+          likes: 0,
+          isLiked: false,
+          comments: []
+        });
+        document.getElementById('modal-text').value = '';
+        document.getElementById('modal-media-url').value = '';
+        modal.style.display = 'none';
+        renderPosts();
+      }
+    };
+
+    // FLOATING CHAT
+    function openChat(name, avatar) {
+      document.getElementById('chat-user-name').innerText = name;
+      document.getElementById('chat-user-img').src = avatar;
+      document.getElementById('chat-window').style.display = 'flex';
+    }
+
+    function closeChat() {
+      document.getElementById('chat-window').style.display = 'none';
+    }
+
+    function sendMessage() {
+      const input = document.getElementById('chat-input');
+      const text = input.value.trim();
+      if (text) {
+        const body = document.getElementById('chat-body');
+        const sentMsg = document.createElement('div');
+        sentMsg.className = 'message sent';
+        sentMsg.innerText = text;
+        body.appendChild(sentMsg);
+        input.value = '';
+        body.scrollTop = body.scrollHeight;
+
+        setTimeout(() => {
+          const replyMsg = document.createElement('div');
+          replyMsg.className = 'message received';
+          replyMsg.innerText = currentLang === 'ar' ? 'تم استلام رسالتك بنجاح!' : 'Message received successfully!';
+          body.appendChild(replyMsg);
+          body.scrollTop = body.scrollHeight;
+        }, 1000);
+      }
+    }
+
+    function handleChatKey(e) {
+      if (e.key === 'Enter') sendMessage();
+    }
+
+    // THEME TOGGLE
+    const themeBtn = document.getElementById('theme-toggle');
+    themeBtn.onclick = () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      themeBtn.innerHTML = isDark ? '<i class="fa-solid fa-moon"></i>' : '<i class="fa-solid fa-sun"></i>';
+    };
+
+    // TIC TAC TOE GAME LOGIC
+    let gameState = ["", "", "", "", "", "", "", "", ""];
+    let currentPlayer = "X";
+    let gameActive = true;
+
+    function openGameModal() {
+      document.getElementById('game-modal').style.display = 'flex';
+    }
+    function closeGameModal() {
+      document.getElementById('game-modal').style.display = 'none';
+    }
+
+    function makeMove(cell, index) {
+      if (gameState[index] !== "" || !gameActive) return;
+      gameState[index] = currentPlayer;
+      cell.innerText = currentPlayer;
+      
+      if (checkWin()) {
+        document.getElementById('game-status').innerText = `🎉 الفائز: ${currentPlayer}`;
+        gameActive = false;
+        return;
+      }
+
+      if (!gameState.includes("")) {
+        document.getElementById('game-status').innerText = "تعادل!";
+        gameActive = false;
+        return;
+      }
+
+      currentPlayer = currentPlayer === "X" ? "O" : "X";
+      document.getElementById('game-status').innerText = `دور اللاعب: ${currentPlayer}`;
+    }
+
+    function checkWin() {
+      const winPatterns = [
+        [0, 1, 2], [3, 4, 5], [6, 7, 8],
+        [0, 3, 6], [1, 4, 7], [2, 5, 8],
+        [0, 4, 8], [2, 4, 6]
+      ];
+      return winPatterns.some(pattern => {
+        return pattern.every(index => gameState[index] === currentPlayer);
+      });
+    }
+
+    function resetGame() {
+      gameState = ["", "", "", "", "", "", "", "", ""];
+      currentPlayer = "X";
+      gameActive = true;
+      document.getElementById('game-status').innerText = `دور اللاعب: X`;
+      document.querySelectorAll('.game-cell').forEach(cell => cell.innerText = '');
+    }
+
+    // INIT
+    renderPosts();
+  </script>
+</body>
+</html>
